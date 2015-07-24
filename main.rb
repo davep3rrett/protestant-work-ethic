@@ -1,5 +1,8 @@
 #!/usr/bin/env ruby
 
+require 'rubygems'
+require 'bundler/setup'
+
 require 'oauth'
 require 'twitter'
 require './bot.rb'
@@ -30,6 +33,6 @@ while(true)
   bot.reload_quotes(quotes_file)
   tweet = bot.find_tweet("#chillin")
   response = bot.build_response(bot.get_username(tweet), bot.random_quote)
-  client.update(response, {:in_reply_to_status => tweet})
+  client.update(response, {:in_reply_to_status => tweet)
   sleep(30 * 60)
 end
