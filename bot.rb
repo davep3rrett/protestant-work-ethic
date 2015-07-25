@@ -39,6 +39,10 @@ class Bot
     end
   end
 
+  def respond(response, tweet)
+    @client.update(response, {:in_reply_to_status => tweet})
+  end
+  
   def reload_quotes(file)
     puts "clearing and reloading quotes..."
     @quotes.clear
