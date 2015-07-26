@@ -44,12 +44,10 @@ class Bot
   end
   
   def reload_quotes(file)
-    puts "clearing and reloading quotes..."
     @quotes.clear
     File.open(file, 'r').each do |line|
       @quotes.push(line)
     end
-    puts "quotes successfully reloaded."
   end
 
 end

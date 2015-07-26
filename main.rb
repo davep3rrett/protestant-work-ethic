@@ -3,15 +3,15 @@
 require 'rubygems'
 require 'bundler/setup'
 
-require 'logger'
-require 'oauth'
 require 'twitter'
 require './bot.rb'
-require './twitter_authenticate.rb'
 
-log = Logger.new('log.txt')
-
-client = TwitterAuthenticate.oauth_dance(ENV["CONSUMER_KEY"], ENV["CONSUMER_SECRET"])
+client = Twitter::REST::Client.new do |config|
+  config.consumer_key        = ENV["CONSUMER_KEY"]
+  config.consumer_secret     = ENV["CONSUMER_SECRET"]
+  config.access_token        = ENV["ACCESS_TOKEN"]
+  config.access_token_secret = ENV["ACCESS_SECRET"]
+end
 
 quotes_file = ARGV[0]
 
